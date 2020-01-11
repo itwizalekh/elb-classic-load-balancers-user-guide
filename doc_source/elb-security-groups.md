@@ -125,12 +125,12 @@ The recommended rules for the subnet for your load balancer depend on the type o
 |  Inbound  | 
 | Source | Protocol | Port | Comment | 
 |  0\.0\.0\.0/0  |  TCP  |  *listener*  |  Allow all inbound traffic on the load balancer listener port  | 
-|  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow inbound traffic from the VPC CIDR on the ephemeral ports  | 
+|  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow inbound traffic from the VPC CIDR on the ephemeral ports, allowing Load balancer to communicate with target instances  | 
 |   Outbound   | 
 | Destination | Protocol | Port | Comment | 
 |  *VPC CIDR*  |  TCP  |  *instance listener*  |  Allow all outbound traffic on the instance listener port  | 
 |  *VPC CIDR*  |  TCP  |  *health check*  |  Allow all outbound traffic on the health check port  | 
-|  0\.0\.0\.0/0  |  TCP  |  1024\-65535  |  Allow all outbound traffic on the ephemeral ports  | 
+|  0\.0\.0\.0/0  |  TCP  |  1024\-65535  |  Allow all outbound traffic on the ephemeral ports, allowing response from target instances to flow through via the load balancer  | 
 
 
 **Internal Load Balancer: Recommended Rules**  
@@ -140,12 +140,12 @@ The recommended rules for the subnet for your load balancer depend on the type o
 |  Inbound  | 
 | Source | Protocol | Port | Comment | 
 |  *VPC CIDR*  |  TCP  |  *listener*  |  Allow inbound traffic from the VPC CIDR on the load balancer listener port  | 
-|  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow inbound traffic from the VPC CIDR on the ephemeral ports  | 
+|  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow inbound traffic from the VPC CIDR on the ephemeral ports, allowing Load balancer to communicate with target instances  | 
 |   Outbound   | 
 | Destination | Protocol | Port | Comment | 
 |  *VPC CIDR*  |  TCP  |  *instance listener*  |  Allow outbound traffic to the VPC CIDR on the instance listener port  | 
 |  *VPC CIDR*  |  TCP  |  *health check*  |  Allow outbound traffic to the VPC CIDR on the health check port  | 
-|  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow outbound traffic to the VPC CIDR on the ephemeral ports  | 
+|  *VPC CIDR*  |  TCP  |  1024\-65535  |  Allow outbound traffic to the VPC CIDR on the ephemeral ports, allowing response from target instances to flow through via the load balancer  | 
 
 The recommended rules for the subnet for your instances depend on whether the subnet is private or public\. The following rules are for a private subnet\. If your instances are in a public subnet, change the source and destination from the CIDR of the VPC to `0.0.0.0/0`\.
 
